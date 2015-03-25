@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Build-Time: 20150325-1500
+Build-Jdk: 1.7.0_71
+Built-By: whe
+Created-By: Apache Maven 3.2.1
+
+Name: Build Details
+Implementation-Title: Version test Maven project
+Implementation-Version: 1.0
+Implementation-SCM-Revision: testrevisionnumber
+Implementation-Build-Number: 34
+

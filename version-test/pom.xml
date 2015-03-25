@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.proquest.whe.test</groupId>
+	<artifactId>version-test</artifactId>
+	<version>1.0</version>
+	<packaging>war</packaging>
+	<name>Version test Maven project</name>
+	<url>http://maven.apache.org</url>
+	<build>
+		<finalName>version-test</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-war-plugin</artifactId>
+		        <version>2.2</version>
+		        <configuration>
+		            <archive>
+		                <manifest>
+		                    <addClasspath>true</addClasspath>
+		                </manifest>
+		                <manifestEntries>
+		                    <Build-Time>${maven.build.timestamp}</Build-Time>  
+		                </manifestEntries>
+		                <manifestSections>
+		                    <manifestSection>
+		                        <name>${build.manifest.section}</name>
+		                        <manifestEntries>
+		                            <Implementation-Title>${project.name}</Implementation-Title>
+		                            <Implementation-Version>${project.version}</Implementation-Version>
+		                            <Implementation-Build-Number>34</Implementation-Build-Number>
+		                            <Implementation-SCM-Revision>testrevisionnumber</Implementation-SCM-Revision>
+		                        </manifestEntries>
+		                    </manifestSection>
+		                </manifestSections>
+		            </archive>
+		        </configuration>
+		        <executions>
+		          <execution>
+		            <phase>package</phase> <!-- bind to the packaging phase -->
+		            <goals>
+		              <goal>manifest</goal>
+		            </goals>
+		          </execution>
+		        </executions>
+		    </plugin>
+		</plugins>
+	</build>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.glassfish.jersey</groupId>
+				<artifactId>jersey-bom</artifactId>
+				<version>${jersey.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<properties>
+		<jersey.version>2.16</jersey.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<build.manifest.section>Build Details</build.manifest.section>
+    	<build.unknown>UNKNOWN</build.unknown>
+    	<build.number>${build.unknown}</build.number>
+    	<build.revision>${build.unknown}</build.revision>
+	</properties>
+</project>
