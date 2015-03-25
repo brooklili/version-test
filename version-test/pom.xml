@@ -39,8 +39,8 @@
 		                        <manifestEntries>
 		                            <Implementation-Title>${project.name}</Implementation-Title>
 		                            <Implementation-Version>${project.version}</Implementation-Version>
-		                            <Implementation-Build-Number>34</Implementation-Build-Number>
-		                            <Implementation-SCM-Revision>testrevisionnumber</Implementation-SCM-Revision>
+		                            <Implementation-Build-Number>${build.number}</Implementation-Build-Number>
+		                            <Implementation-SCM-Revision>${build.revision}</Implementation-SCM-Revision>
 		                        </manifestEntries>
 		                    </manifestSection>
 		                </manifestSections>
